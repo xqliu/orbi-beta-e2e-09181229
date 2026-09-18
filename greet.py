@@ -4,9 +4,12 @@ Usage:
     python greet.py               # Hello, world!
     python greet.py Orbi          # Hello, Orbi!
     python greet.py --shout Orbi  # HELLO, ORBI!
+    python greet.py --version     # greet.py 0.1.0
 """
 
 import sys
+
+__version__ = "0.1.0"
 
 
 def greet(name: str, shout: bool = False) -> str:
@@ -17,6 +20,9 @@ def greet(name: str, shout: bool = False) -> str:
 
 def main() -> None:
     args = sys.argv[1:]
+    if "--version" in args:
+        print(f"greet.py {__version__}")
+        return
     shout = "--shout" in args
     if shout:
         args = [arg for arg in args if arg != "--shout"]

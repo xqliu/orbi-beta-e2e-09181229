@@ -62,6 +62,26 @@ def test_main_prints_greeting(monkeypatch, capsys) -> None:
     assert capsys.readouterr().out == "Hello, world!\n"
 
 
+def test_cli_version() -> None:
+    result = run_cli("--version")
+    assert result.stdout == "greet.py 0.1.0\n"
+
+
+def test_cli_version_takes_precedence_over_name() -> None:
+    result = run_cli("--version", "Orbi")
+    assert result.stdout == "greet.py 0.1.0\n"
+
+
+def test_main_prints_version(monkeypatch, capsys) -> None:
+    monkeypatch.setattr(sys, "argv", ["greet.py", "--version"])
+    greet.main()
+    assert capsys.readouterr().out == "greet.py 0.1.0\n"
+
+
+def test_module_exposes_version() -> None:
+    assert greet.__version__ == "0.1.0"
+
+
 def test_main_prints_shouted_greeting(monkeypatch, capsys) -> None:
     monkeypatch.setattr(sys, "argv", ["greet.py", "--shout", "Orbi"])
     greet.main()
