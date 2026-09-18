@@ -4,6 +4,7 @@ Usage:
     python greet.py               # Hello, world!
     python greet.py Orbi          # Hello, Orbi!
     python greet.py --shout Orbi  # HELLO, ORBI!
+    python greet.py --quiet Orbi  # (no output)
     python greet.py --version     # greet.py 0.1.0
 """
 
@@ -26,8 +27,12 @@ def main() -> None:
     shout = "--shout" in args
     if shout:
         args = [arg for arg in args if arg != "--shout"]
+    quiet = "--quiet" in args
+    if quiet:
+        args = [arg for arg in args if arg != "--quiet"]
     name = args[0] if args else "world"
-    print(greet(name, shout=shout))
+    if not quiet:
+        print(greet(name, shout=shout))
 
 
 if __name__ == "__main__":  # pragma: no cover
