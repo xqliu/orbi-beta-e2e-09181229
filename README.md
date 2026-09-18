@@ -20,5 +20,8 @@ Hello, world!
 Run the tests:
 
 ```console
-$ python -m pytest
+$ make test
 ```
+
+This runs `python -m pytest`; extra pytest arguments can be passed with
+`make test PYTEST_ARGS=<args>`.
