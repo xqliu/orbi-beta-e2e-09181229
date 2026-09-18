@@ -47,6 +47,8 @@ Goodbye, world!
 
 Run the tests:
 
+The suite includes a long-running integration check and takes about 17 minutes.
+
 ```console
 $ python -m pytest
 ```
