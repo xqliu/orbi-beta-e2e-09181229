@@ -24,6 +24,12 @@ $ python greet.py --shout Orbi
 HELLO, ORBI!
 ```
 
+Suppress the greeting (nothing is printed, exit code 0) with `--quiet`:
+
+```console
+$ python greet.py --quiet Orbi
+```
+
 Print the version with `--version`:
 
 ```console

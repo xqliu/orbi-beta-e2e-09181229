@@ -78,6 +78,37 @@ def test_main_prints_version(monkeypatch, capsys) -> None:
     assert capsys.readouterr().out == "greet.py 0.1.0\n"
 
 
+def test_cli_quiet_with_name() -> None:
+    result = run_cli("--quiet", "Orbi")
+    assert result.stdout == ""
+
+
+def test_cli_quiet_without_name() -> None:
+    result = run_cli("--quiet")
+    assert result.stdout == ""
+
+
+def test_cli_quiet_after_name() -> None:
+    result = run_cli("Orbi", "--quiet")
+    assert result.stdout == ""
+
+
+def test_cli_quiet_wins_over_shout() -> None:
+    result = run_cli("--quiet", "--shout", "Orbi")
+    assert result.stdout == ""
+
+
+def test_cli_version_takes_precedence_over_quiet() -> None:
+    result = run_cli("--quiet", "--version")
+    assert result.stdout == "greet.py 0.1.0\n"
+
+
+def test_main_prints_nothing_when_quiet(monkeypatch, capsys) -> None:
+    monkeypatch.setattr(sys, "argv", ["greet.py", "--quiet", "Orbi"])
+    greet.main()
+    assert capsys.readouterr().out == ""
+
+
 def test_module_exposes_version() -> None:
     assert greet.__version__ == "0.1.0"
 
