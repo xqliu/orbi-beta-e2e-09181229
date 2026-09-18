@@ -24,6 +24,20 @@ $ python greet.py --shout Orbi
 HELLO, ORBI!
 ```
 
+Say goodbye to someone by name:
+
+```console
+$ python farewell.py Orbi
+Goodbye, Orbi!
+```
+
+Without a name it says goodbye to the world:
+
+```console
+$ python farewell.py
+Goodbye, world!
+```
+
 Run the tests:
 
 ```console
