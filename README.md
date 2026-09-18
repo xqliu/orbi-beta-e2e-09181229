@@ -17,6 +17,13 @@ $ python greet.py
 Hello, world!
 ```
 
+Shout the greeting in upper case with `--shout`:
+
+```console
+$ python greet.py --shout Orbi
+HELLO, ORBI!
+```
+
 Run the tests:
 
 ```console
