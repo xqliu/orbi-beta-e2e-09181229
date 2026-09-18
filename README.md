@@ -24,6 +24,13 @@ $ python greet.py --shout Orbi
 HELLO, ORBI!
 ```
 
+Print the version with `--version`:
+
+```console
+$ python greet.py --version
+greet.py 0.1.0
+```
+
 Say goodbye to someone by name:
 
 ```console
